@@ -1,7 +1,7 @@
-from pages.base_page import Page
-from pages.explore_page import ExplorePage
-from pages.onboarding_page import OnboardingPage
-from pages.search_page import SearchPage
+from pages.base_pagePOM import Page
+from pages.explore_pagePOM import ExplorePage
+from pages.onboarding_pagePOM import OnboardingPage
+from pages.search_pagePOM import SearchPage
 
 
 class Application:

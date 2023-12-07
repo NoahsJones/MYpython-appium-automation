@@ -16,7 +16,7 @@ def mobile_driver_init(context, scenario_name):
         "appActivity": "org.wikipedia.main.MainActivity",
         "appPackage": "org.wikipedia",
         # Put your path below:
-        "app": ".../mobile_app/wikipedia.apk"
+        "app": "C:/Users/noahsj/MYpython-appium-automation/mobile_app/wikipedia.apk"
     }
 
     appium_server_url = 'http://localhost:4723'

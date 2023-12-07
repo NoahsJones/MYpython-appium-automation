@@ -12,7 +12,7 @@ class Page:
     def open_url(self, url):
         self.driver.get(url)
 
-    def click(self, *locator):
+    def tap(self, *locator):
         self.driver.find_element(*locator).click()
 
     def find_element(self, *locator):
@@ -27,7 +27,7 @@ class Page:
     def save_screenshot(self, name):
         self.driver.save_screenshot(f'{name}.png')
 
-    def wait_for_element_click(self, *locator):
+    def wait_for_element_tap(self, *locator):
         self.wait.until(
             EC.element_to_be_clickable(locator),
             message=f'Element by {locator} not clickable'

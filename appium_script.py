@@ -13,7 +13,7 @@ desired_capabilities = {
     "appActivity": "org.wikipedia.main.MainActivity",
     "appPackage": "org.wikipedia",
     # Put your path below:
-    "app": ".../mobile_app/wikipedia.apk"
+    "app": "C:/Users/noahsj/MYpython-appium-automation/mobile_app/wikipedia.apk"
 }
 
 appium_server_url = 'http://localhost:4723'
@@ -22,19 +22,24 @@ capabilities_options = UiAutomator2Options().load_capabilities(desired_capabilit
 driver = webdriver.Remote(appium_server_url, options=capabilities_options)
 driver.implicitly_wait(5)
 
-# Click Skip btn
+
+# sleep(5)
+
+
+# # Click Skip btn
 driver.find_element(AppiumBy.ID, 'org.wikipedia:id/fragment_onboarding_skip_button').click()
 
-# Click Search icon
+# # Click Search icon
 driver.find_element(AppiumBy.XPATH, "//*[@content-desc='Search Wikipedia']").click()
 
-# Populate search field:
+# # Populate search field:
 driver.find_element(AppiumBy.ID, 'org.wikipedia:id/search_src_text').send_keys('Python (programming language)')
 
-# Verification
+# # Verification
 expected_result = 'Python (programming language)'
 actual_result = driver.find_element(AppiumBy.ID, 'org.wikipedia:id/page_list_item_title').text
 
 assert actual_result == expected_result, f'Expected {expected_result} did not match actual {actual_result}'
+print('Test Case Passed!')
 
 driver.quit()
