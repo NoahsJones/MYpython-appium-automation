@@ -1,9 +1,11 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
 
 
 class Page:
+    BACK_BUTTON = (AppiumBy.XPATH, "//android.widget.ImageButton[@content-desc='Navigate up']")
 
     def __init__(self, driver):
         self.driver = driver
@@ -62,3 +64,6 @@ class Page:
         actual_text = self.find_element(*locator).text
         assert expected_text == actual_text, \
             f"Expected text '{expected_text}' did not match actual '{actual_text}'"
+
+    def go_back(self):
+        self.tap(*self.BACK_BUTTON)

@@ -5,5 +5,5 @@ Feature: # Enter feature name here
   Scenario: Customize explore feed only appears initially.
     Given Click to Skip onboarding
     When Open Customize Explore Feed
-#    And Go back
-#    Then Verify Customize Explore Feed is not found
+    And Go back
+    Then Verify CUSTOMIZE ON Explore Feed is not found
