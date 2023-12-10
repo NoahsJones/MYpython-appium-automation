@@ -6,6 +6,10 @@ from time import sleep
 
 class Page:
     BACK_BUTTON = (AppiumBy.XPATH, "//android.widget.ImageButton[@content-desc='Navigate up']")
+    SAVED_TAB = (AppiumBy.ID, "org.wikipedia:id/nav_tab_reading_lists")
+    MORE_TAB = (AppiumBy.ID, "org.wikipedia:id/nav_more_container")
+    READING_SYNC_NO_THANKS = (AppiumBy.ID, "android:id/button2")
+
 
     def __init__(self, driver):
         self.driver = driver
@@ -67,3 +71,15 @@ class Page:
 
     def go_back(self):
         self.tap(*self.BACK_BUTTON)
+
+
+    def open_saved_tab(self):
+        self.tap(*self.SAVED_TAB)
+
+
+    def open_more_tab(self):
+        self.tap(*self.MORE_TAB)
+
+
+    def warn_reading_list_sync_no(self):
+        self.tap(*self.READING_SYNC_NO_THANKS)

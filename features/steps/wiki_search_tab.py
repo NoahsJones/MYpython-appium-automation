@@ -1,11 +1,6 @@
 from behave import given, when, then
 
 
-@given('Click to Skip onboarding')
-def click_skip_ob(context):
-    context.app.ob_page.click_skip_ob()
-
-
 @when('Click Search icon')
 def click_search_icon(context):
     context.app.explore_page.click_search_icon()

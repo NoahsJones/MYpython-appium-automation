@@ -1,7 +1,8 @@
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
-
 from app.application import Application
+import subprocess
+import time
 
 
 def mobile_driver_init(context, scenario_name):
@@ -28,6 +29,24 @@ def mobile_driver_init(context, scenario_name):
     context.app = Application(context.driver)
 
 
+def reset_emulator(context):
+    # Clear app data using ADB shell commands
+    package_name = "org.wikipedia"  # Replace with your app's package name
+    emulator_serial = "emulator-5554"  # Replace with your emulator's serial
+
+    # Stop the app
+    subprocess.run(["adb", "-s", emulator_serial, "shell", "am", "force-stop", package_name])
+
+    # Clear app data
+    subprocess.run(["adb", "-s", emulator_serial, "shell", "pm", "clear", package_name])
+
+    # Start the app (adjust the app activity and package name if needed)
+    subprocess.run(
+        ["adb", "-s", emulator_serial, "shell", "am", "start", "-n", f"{package_name}/org.wikipedia.main.MainActivity"])
+
+    time.sleep(10)  # Adjust sleep time based on your environment
+
+
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
     mobile_driver_init(context, scenario.name)
@@ -45,3 +64,5 @@ def after_step(context, step):
 
 def after_scenario(context, feature):
     context.driver.quit()
+    reset_emulator(context)
+
